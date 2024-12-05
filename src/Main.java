@@ -25,7 +25,25 @@ public class Main{
 
         Main main = new Main();
 
-        main.testStudent(Student.arrStudents, new CheckOverGrade());
+//        main.pokazatStudentov(Student.arrStudents, new CheckOverGrade());
+//        System.out.println("----------------------------------------------------------");
+//        main.pokazatStudentov(Student.arrStudents, new ChecOverAge());
+//        System.out.println("----------------------------------------------------------");
+////        main.pokazatStudentov(Student.arrStudents, new ChecOverMix());
+//        System.out.println("----------------------------------------------------------");
+//        main.pokazatStudentov(Student.arrStudents, new StudentCheck() {
+//            @Override
+//            public boolean check(Student s) {
+//                return s.getAge() > 22 && s.getAvgGrade() > 8 && s.getSex().equals("M");
+//            }
+//        });
+        System.out.println("----------------------------------------------------------");
+        main.pokazatStudentov(Student.arrStudents, s -> s.getAge() > 22 && s.getAvgGrade() > 8 && s.getSex().equals("M"));
+        System.out.println("----------------------------------------------------------");
+        main.pokazatStudentov(Student.arrStudents, t -> t.getAge() > 22);
+        System.out.println("----------------------------------------------------------");
+
+
 
 //        main.printStudentOverGrade(Student.arrStudents);
 //        System.out.println("----------------------------------------");
@@ -34,11 +52,15 @@ public class Main{
 //        main.printStudentMixCondition(Student.arrStudents);
 //        System.out.println("----------------------------------------");
 
+        main.hello((String a) -> a.length());
     }
 
 
+    public void hello(Hi def){
+        def.hi("1234");
+    };
 
-    public void testStudent(ArrayList<Student> al, StudentCheck sc){
+    public void pokazatStudentov(ArrayList<Student> al, StudentCheck sc){
         for (Student s : al){
             if(sc.check(s)){
                 System.out.println(s);
@@ -80,6 +102,27 @@ class CheckOverGrade implements StudentCheck{
     }
 }
 
+class ChecOverAge implements StudentCheck{
+    @Override
+    public boolean check(Student s) {
+        return s.getAge() > 22;
+    }
+}
+
+//class ChecOverMix implements StudentCheck {
+//    @Override
+//    public boolean check(Student s) {
+//        return s.getAge() > 22 && s.getAvgGrade() > 8 && s.getSex().equals("M");
+//    }
+//}
+
+interface Hi{
+    int hi(String s);
+}
+
 interface StudentCheck{
     boolean check(Student s);
+    default void hi(){
+        System.out.println("hi");
+    }
 }
