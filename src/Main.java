@@ -52,12 +52,19 @@ public class Main{
 //        main.printStudentMixCondition(Student.arrStudents);
 //        System.out.println("----------------------------------------");
 
-        main.hello((String a) -> a.length());
+
+        main.defRepeat("pasha", (String s) -> System.out.println(s));
+
+        Hi a = () -> System.out.println("3");
+        main.hello(a);
     }
 
+    public void defRepeat(String string, Repeat repeat){
+        repeat.rep(string);
+    }
 
     public void hello(Hi def){
-        def.hi("1234");
+        def.hi();
     };
 
     public void pokazatStudentov(ArrayList<Student> al, StudentCheck sc){
@@ -68,6 +75,8 @@ public class Main{
         }
     }
 
+
+// АНОНИМНЫЕ КЛАССЫ
 //    public void printStudentOverGrade(ArrayList<Student> t){
 //        for (Student s : t){
 //            if(s.getAvgGrade() > 5) {
@@ -91,24 +100,44 @@ public class Main{
 }
 
 //-----------------------------------------------------------------------------------------
-class Test{
 
+@FunctionalInterface
+interface Repeat{
+    void rep(String s);
 }
 
-class CheckOverGrade implements StudentCheck{
-    @Override
-    public boolean check(Student s) {
-        return s.getAvgGrade() > 5;
+@FunctionalInterface
+interface Hi{
+    void hi();
+}
+
+
+@FunctionalInterface
+interface StudentCheck{
+    boolean check(Student s);
+    default void hi(){
+        System.out.println("hi");
     }
 }
 
-class ChecOverAge implements StudentCheck{
-    @Override
-    public boolean check(Student s) {
-        return s.getAge() > 22;
-    }
-}
 
+
+
+
+
+//class CheckOverGrade implements StudentCheck{
+//    @Override
+//    public boolean check(Student s) {
+//        return s.getAvgGrade() > 5;
+//    }
+//}
+//
+//class ChecOverAge implements StudentCheck{
+//    @Override
+//    public boolean check(Student s) {
+//        return s.getAge() > 22;
+//    }
+//}
 //class ChecOverMix implements StudentCheck {
 //    @Override
 //    public boolean check(Student s) {
@@ -116,13 +145,3 @@ class ChecOverAge implements StudentCheck{
 //    }
 //}
 
-interface Hi{
-    int hi(String s);
-}
-
-interface StudentCheck{
-    boolean check(Student s);
-    default void hi(){
-        System.out.println("hi");
-    }
-}
