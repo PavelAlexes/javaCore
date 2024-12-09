@@ -1,10 +1,10 @@
-import java.util.ArrayList;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main{
 //13.02
+import java.util.ArrayList;
+public class Main implements Check{
+
     public static void main(String[] args) {
+
+        Main main = new Main();
 
         Student student1 = new Student("pasha1", 20, 2, "M", 9.3);
         Student student2 = new Student("pasha2", 21, 3, "G", 4.3);
@@ -23,58 +23,62 @@ public class Main{
         Student.arrStudents.add(student6);
         Student.arrStudents.add(student7);
 
-        Main main = new Main();
 
-//        main.pokazatStudentov(Student.arrStudents, new CheckOverGrade());
-//        System.out.println("----------------------------------------------------------");
-//        main.pokazatStudentov(Student.arrStudents, new ChecOverAge());
-//        System.out.println("----------------------------------------------------------");
-////        main.pokazatStudentov(Student.arrStudents, new ChecOverMix());
-//        System.out.println("----------------------------------------------------------");
-//        main.pokazatStudentov(Student.arrStudents, new StudentCheck() {
-//            @Override
-//            public boolean check(Student s) {
-//                return s.getAge() > 22 && s.getAvgGrade() > 8 && s.getSex().equals("M");
-//            }
-//        });
-        System.out.println("----------------------------------------------------------");
-        main.pokazatStudentov(Student.arrStudents, s -> s.getAge() > 22 && s.getAvgGrade() > 8 && s.getSex().equals("M"));
-        System.out.println("----------------------------------------------------------");
-        main.pokazatStudentov(Student.arrStudents, t -> t.getAge() > 22);
-        System.out.println("----------------------------------------------------------");
+        main.defGetStudent(Student.arrStudents, s -> s.getAge() > 23);
 
 
-
-//        main.printStudentOverGrade(Student.arrStudents);
-//        System.out.println("----------------------------------------");
-//        main.printStudentUnderAge(Student.arrStudents);
-//        System.out.println("----------------------------------------");
-//        main.printStudentMixCondition(Student.arrStudents);
-//        System.out.println("----------------------------------------");
-
-
-        main.defRepeat("pasha", (String s) -> System.out.println(s));
-
-        Hi a = () -> System.out.println("3");
-        main.hello(a);
     }
 
-    public void defRepeat(String string, Repeat repeat){
-        repeat.rep(string);
-    }
 
-    public void hello(Hi def){
-        def.hi();
-    };
 
-    public void pokazatStudentov(ArrayList<Student> al, StudentCheck sc){
-        for (Student s : al){
-            if(sc.check(s)){
-                System.out.println(s);
+
+    //methods ----------------------------------------------------------------------------------------
+
+    public void defGetStudent(ArrayList<Student> students, Check check){
+        for(Student student : students){
+            if(check.getStudent(student)){
+                System.out.println(student);
             }
         }
     }
 
+
+//    public void defRepeat(String string, Repeat repeat) {
+//        repeat.rep(string);
+//    }
+//
+//
+//    public void pokazatStudentov(ArrayList<Student> al, StudentCheck sc) {
+//        for (Student s : al) {
+//            if (sc.check(s)) {
+//                System.out.println(s);
+//            }
+//        }
+//    }
+
+
+    //interfaces -----------------------------------------------------------------------------------------
+
+    @Override
+    public boolean getStudent(Student s) {
+        return false;
+    }
+
+
+//    @FunctionalInterface
+//    interface Repeat {
+//        void rep(String s);
+//    }
+//
+//    @FunctionalInterface
+//    interface StudentCheck {
+//        boolean check(Student s);
+//
+//        default void hi() {
+//            System.out.println("hi");
+//        }
+//    }
+}
 
 // АНОНИМНЫЕ КЛАССЫ
 //    public void printStudentOverGrade(ArrayList<Student> t){
@@ -96,31 +100,6 @@ public class Main{
 //            System.out.println(s);
 //        }
 //    }
-
-}
-
-//-----------------------------------------------------------------------------------------
-
-@FunctionalInterface
-interface Repeat{
-    void rep(String s);
-}
-
-@FunctionalInterface
-interface Hi{
-    void hi();
-}
-
-
-@FunctionalInterface
-interface StudentCheck{
-    boolean check(Student s);
-    default void hi(){
-        System.out.println("hi");
-    }
-}
-
-
 
 
 
