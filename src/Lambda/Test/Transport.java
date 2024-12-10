@@ -1,6 +1,7 @@
 package Lambda.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Transport{
 
@@ -8,7 +9,7 @@ public class Transport{
     private String mark;
     private int horsePower;
     private int gabarits;
-    public static ArrayList<Transport> arrTransports = new ArrayList<>();
+    public static List<Transport> arrTransports = GetList.getTransportArrList();
 
     // constructor ------------------------------------------------------------------------
     public Transport(String model, String mark, int horsePower, int gabarits) {
@@ -16,7 +17,6 @@ public class Transport{
         setMark(mark);
         setHorsePower(horsePower);
         setGabarits(gabarits);
-        System.out.println(toString());;
     }
     // set ------------------------------------------------------------------------
     private void setModel(String model) {
