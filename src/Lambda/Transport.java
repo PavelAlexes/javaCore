@@ -3,13 +3,13 @@ package Lambda.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Transport{
+public class Transport {
 
     private String model;
     private String mark;
     private int horsePower;
     private int gabarits;
-    public static List<Transport> arrTransports = GetList.getTransportArrList();
+//    public static List<Transport> arrTransports = GetList.getTransportArrList();
 
     // constructor ------------------------------------------------------------------------
     public Transport(String model, String mark, int horsePower, int gabarits) {
@@ -18,6 +18,7 @@ public class Transport{
         setHorsePower(horsePower);
         setGabarits(gabarits);
     }
+
     // set ------------------------------------------------------------------------
     private void setModel(String model) {
         this.model = model;
@@ -54,12 +55,13 @@ public class Transport{
 
     // methods ------------------------------------------------------------------------
     public void information(ArrayList<Transport> transports, TransportInfo transportInfo) {
-        for (Transport transport : transports){
-            if(transportInfo.information(transport)){
-                System.out.println(transport.getMark()+ " " + transport.getModel() +" Это спорткар!!!!");
-            }else System.out.println(transport.getMark()+ " " + transport.getModel() +" Это медленное корыто!!!!");
+        for (Transport transport : transports) {
+            if (transportInfo.information(transport)) {
+                System.out.println(transport.getMark() + " " + transport.getModel() + " Это спорткар!!!!");
+            } else System.out.println(transport.getMark() + " " + transport.getModel() + " Это медленное корыто!!!!");
         }
     }
+
     @Override
     public String toString() {
         return "Transport{" +
