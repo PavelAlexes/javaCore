@@ -1,2 +1,6 @@
-package LinkedList;public class Main {
+package LinkedList;
+
+public class Main {
+
+
 }

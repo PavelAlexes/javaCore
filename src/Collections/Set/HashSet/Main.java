@@ -1,2 +1,4 @@
-package Collections.Set.HashSet;public class Main {
+package Collections.Set.HashSet;
+
+public class Main {
 }

@@ -1,10 +1,8 @@
-package Lambda.Test;
-
-
-import java.util.ArrayList;
-
-@FunctionalInterface
-public interface TransportInfo {
-    public boolean information(Transport t);
-
-}
+//package Lambda;
+//
+//
+//@FunctionalInterface
+//public interface TransportInfo {
+//    public boolean information(Transport t);
+//
+//}
