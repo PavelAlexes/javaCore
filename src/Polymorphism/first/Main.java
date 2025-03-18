@@ -7,7 +7,6 @@ public class Main {
         System.out.println("Rock or PopMusic?");
         player.playMusicPlayer();
 
-
     }
 }
 
