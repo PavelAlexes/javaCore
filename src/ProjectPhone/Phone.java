@@ -8,6 +8,8 @@ public class Phone {
     public Phone() {
     }
 
+    // constructors //
+
     public Phone(String number) {
         setNumber(number);
     }
@@ -21,6 +23,8 @@ public class Phone {
         this(number, model);
         setWeight(weight);
     }
+
+    // set and get //
 
     public String getModel() {
         return model;
@@ -44,5 +48,20 @@ public class Phone {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    // methods //
+
+    public String receiveCall(Person person) {
+        return "A call from " + person.getName();
+    }
+
+    public String getNumber(Person person) {
+        try {
+            return "Number: " + person.getPhone().getNumber();
+        }catch (Exception e) {
+            System.out.println("This person does not have a phone!");
+        }
+        return null;
     }
 }
